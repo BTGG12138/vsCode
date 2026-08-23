@@ -1,0 +1,26 @@
+su - 用户名                              #切换到用户
+exit                                    #退回到上一个用户
+sudo 命令                                #用root权限执行命令
+visudo                                  #在切换到root用户后，使用visudo打开编辑器，到新一行输入"用户名 ALL=(ALL)    NOPASSWD: ALL",ctrl+O保存,ctrl+X退出
+drwxr-xr-x                              #1.文件类型：-文件 d文件夹 l软链接 234：所属用户权限 567：所属用户组权限 890：其它用户权限。r可读，w可写，x可执行
+chmod u=rwx,g=rx,o=x 文件名称            #修改权限，实际为rwxr-x--x
+chmod -R 751 文件夹名称                  #修改文件夹和里面的文件的权限，实际为rwxr-x--x
+chown :用户组名称 文件名称                #修改文件所属的用户组
+chown -R 用户名称:用户组名称 文件夹名称    #修改文件夹和里面的文件的所属的用户和用户组
+ctrl+d                                  #退出页面或者是登录
+history                                 #输出历史命令
+！命令                                   #执行历史最近的匹配的命令
+ctrl+r                                  #输出历史最近的匹配的命令，enter执行，方向键切换
+ctrl+a                                  #光标移动到命令开头
+ctrl+e                                  #光标移动到命令结尾
+systemctl status 软件名称                #查看软件的状态
+systemctl start 软件名称                 #打开软件
+systemctl stop 软件名称                  #关闭软件
+ln -s 链接源名称 创建链接地址             #创建软链接
+wget 下载地址                            #下载地址的文件
+curl 网站地址                            #向网站发起请求
+curl -O 网站地址                         #下载地址的文件
+nmap ip地址                             #扫描ip地址暴露的端口
+ps -ef                                  #展示全部进程的全部信息
+kill 进程ID                             #停止进程
+kill -9 进程ID                          #强制停止进程
