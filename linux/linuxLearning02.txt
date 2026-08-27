@@ -13,9 +13,9 @@ history                                 #输出历史命令
 ctrl+r                                  #输出历史最近的匹配的命令，enter执行，方向键切换
 ctrl+a                                  #光标移动到命令开头
 ctrl+e                                  #光标移动到命令结尾
-systemctl status 软件名称                #查看软件的状态
-systemctl start 软件名称                 #打开软件
-systemctl stop 软件名称                  #关闭软件
+systemctl status 服务名称                #查看服务的状态
+systemctl start 服务名称                 #打开服务
+systemctl stop 服务名称                  #关闭服务
 ln -s 链接源名称 创建链接地址             #创建软链接
 wget 下载地址                            #下载地址的文件
 curl 网站地址                            #向网站发起请求
@@ -24,3 +24,12 @@ nmap ip地址                             #扫描ip地址暴露的端口
 ps -ef                                  #展示全部进程的全部信息
 kill 进程ID                             #停止进程
 kill -9 进程ID                          #强制停止进程
+top                                     #打开任务管理器
+df -h                                   #打开有文件大小单位的磁盘管理器
+tar -cvf 压缩包名称 文件名称              #压缩文件到文件夹，tar格式，显示压缩进度
+tar -zcvf 压缩包名称 文件名称             #压缩文件到文件夹，gz格式，显示压缩进度
+tar -xvf 压缩包名称 -C 解压地址           #解压文件到文件夹，tar格式，显示解压进度
+tar -zxvf 压缩包名称 -C 解压地址          #解压文件到文件夹，gz格式，显示解压进度
+zip 压缩包名称 文件名称                   #压缩文件到文件夹，zip格式
+zip -r 压缩包名称 文件夹名称              #压缩文件夹到文件夹，zip格式
+unzip 压缩包名称 -d 解压地址              #解压文件到文件夹，zip格式，显示解压进度

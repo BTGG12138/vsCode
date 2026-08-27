@@ -1,0 +1,2 @@
+ctrl+alt+t                              #打开终端
+printenv                                #与“echo $”相同，打印环境变量 
