@@ -20,3 +20,7 @@ ros2 interface show cpp_demo/msg/Student
 6.列出当前所有活跃话题，检查你的话题是否存在
 ros2 topic list
 
+7.ROS2 定义消息/服务/接口的包必备配置专门用于 .msg .srv .action 接口文件
+<build_depend>rosidl_default_generators</build_depend>
+<exec_depend>rosidl_default_runtime</exec_depend>
+<member_of_group>rosidl_interface_packages</member_of_group>
