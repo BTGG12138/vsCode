@@ -2,7 +2,7 @@
 创建母文件夹，复制.vscode，创建_ws/src文件夹
 
 2.创建 ament_cmake C++ 包
-ros2 pkg create --build-type ament_cmake cpp_demo --dependencies rclcpp std_msgs
+ros2 pkg create --build-type ament_cmake cpp_demo --dependencies rclcpp
 
 3.编译工作空间
 cd ~/_ws
