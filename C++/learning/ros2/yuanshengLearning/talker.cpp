@@ -15,7 +15,7 @@ public:
 
         // 创建500ms周期定时器，绑定回调函数timer_callback
         timer_ = this->create_wall_timer(
-            500ms,
+            std::chrono::milliseconds(500),
             std::bind(&MinimalPublisher::timer_callback, this)
         );
     }

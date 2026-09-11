@@ -1,5 +1,5 @@
 1.创建工作空间目录
-创建母文件夹，复制.vscode，创建_ws/src文件夹
+创建母文件夹，复制.vscode，创建_ws文件夹
 
 2.创建 ament_cmake C++ 包
 ros2 pkg create --build-type ament_cmake cpp_demo --dependencies rclcpp
@@ -11,7 +11,7 @@ colcon build --symlink-install --packages-select cpp_demo
 
 4.source 环境，运行节点
 source install/setup.bash
-ros2 run cpp_demo yuanshengLearning
+ros2 run cpp_demo Learning
 
 5.查看自定义消息接口
 . install/setup.bash

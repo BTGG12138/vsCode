@@ -1,37 +1,23 @@
 cmake_minimum_required(VERSION 3.8)
-project(demo_cpp_pkg)
-
+#检查版本要求
+project(cpp_demo)
+#包体命名，替代后面的${PROJECT_NAME}占位符
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
-
-# find dependencies
+#检查警告功能，可以不加
 find_package(ament_cmake REQUIRED)
+#ROS2 的编译工具核心包
 find_package(rclcpp REQUIRED)
-
-add_executable(gongnengbaoLearning src/gongnengbaoLearning.cpp)
-
-message(STATUS ${rclcpp_INCLUDE_DIRS})
-message(STATUS ${rclcpp_LIBRARIES})
-
-target_include_directories(gongnengbaoLearning PUBLIC ${rclcpp_INCLUDE_DIRS})
-target_link_libraries(gongnengbaoLearning ${rclcpp_LIBRARIES})
-
+#ROS2 C++ 客户端库
+add_executable(Learning src/Learning.cpp)
+#生成程序名称，生成程序原文件
+ament_target_dependencies(Learning PUBLIC rclcpp)
+#ROS2合并后的简要表达，添加依赖
 install(TARGETS
-  gongnengbaoLearning
+  Learning
   DESTINATION lib/${PROJECT_NAME}
 )
-
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
-
+#安装到指定位置
 ament_package()
+#提交包体，结束

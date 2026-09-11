@@ -4,8 +4,7 @@ project(cpp_demo)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-
-# 你的可执行文件，cpp文件名严格匹配
+#ROS2 基础消息包，xml要加上<depend>std_msgs</depend>
 add_executable(talker src/talker.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
 add_executable(listener src/listener.cpp)
