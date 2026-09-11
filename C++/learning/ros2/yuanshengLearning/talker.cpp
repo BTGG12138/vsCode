@@ -1,8 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-using namespace std::chrono_literals;
-
 // 自定义节点类，公有继承 rclcpp::Node
 class MinimalPublisher : public rclcpp::Node
 {
@@ -36,7 +34,7 @@ private:
     size_t count_;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     // 直接把新建节点共享指针传入spin

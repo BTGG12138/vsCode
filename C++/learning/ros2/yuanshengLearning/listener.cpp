@@ -1,9 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-// std::placeholders::_1：占位符，代表回调收到的消息参数
-using std::placeholders::_1;
-
 class MinimalSubscriber : public rclcpp::Node
 {
 public:
@@ -14,7 +11,11 @@ public:
         subscription_ = this->create_subscription<std_msgs::msg::String>(
             "topic",
             10,
-            std::bind(&MinimalSubscriber::topic_callback, this, _1)
+            std::bind(&MinimalSubscriber::topic_callback, this,
+            std::placeholders::_1)
+            //可以用lambda表达式替代
+            //[this](const std_msgs::msg::String & msg){
+            //this->topic_callback(msg);}
         );
     }
 
@@ -29,7 +30,7 @@ private:
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<MinimalSubscriber>());
