@@ -1,7 +1,7 @@
 #include "rclcpp/rclcpp.hpp"
-#include "cpp_demo/msg/student.hpp"   // 自定义消息头文件
+#include "cpp_demo/msg/student.hpp"   
+// 自定义消息头文件
 
-using namespace std::chrono_literals;
 using cpp_demo::msg::Student;
 
 class MinimalPublisher : public rclcpp::Node
@@ -13,14 +13,15 @@ public:
         // 创建发布者，话题名 topic_stu
         publisher_ = this->create_publisher<Student>("topic_stu", 10);
         // 500ms定时器，周期性发布消息
-        timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(500), 
+        std::bind(&MinimalPublisher::timer_callback, this));
     }
 
 private:
     void timer_callback()
     {
         auto stu = Student();
-        stu.name = "张三";
+        stu.name = "冯铖";
         stu.age = count_++;
         stu.height = 1.65;
         RCLCPP_INFO(this->get_logger(),"学生信息:name=%s,age=%d,height=%.2f", stu.name.c_str(),stu.age,stu.height);
@@ -32,7 +33,7 @@ private:
     size_t count_;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<MinimalPublisher>());

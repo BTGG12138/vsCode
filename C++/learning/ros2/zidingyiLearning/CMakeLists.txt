@@ -4,19 +4,18 @@ project(cpp_demo)
 # find dependencies
 
 find_package(ament_cmake REQUIRED)
-
-# find_package(<dependency> REQUIRED)
-
-find_package(rosidl_default_generators REQUIRED)
-
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+
+#找到消息代码生成器接口包
+find_package(rosidl_default_generators REQUIRED)
+
 # 为接口文件生成源码
 rosidl_generate_interfaces( ${PROJECT_NAME}
   "msg/Student.msg"
 )
 
-# 你的可执行文件，cpp文件名严格匹配
+# 可执行文件，cpp文件名严格匹配
 add_executable(talker src/talker.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
 add_executable(listener src/listener.cpp)

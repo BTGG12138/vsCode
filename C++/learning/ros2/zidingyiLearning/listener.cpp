@@ -1,7 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "cpp_demo/msg/student.hpp"
 
-using std::placeholders::_1;
 using cpp_demo::msg::Student;
 
 class MinimalSubscriber : public rclcpp::Node
@@ -14,7 +13,8 @@ public:
         subscription_ = this->create_subscription<Student>(
             "topic_stu",
             10,
-            std::bind(&MinimalSubscriber::topic_callback, this, _1)
+            std::bind(&MinimalSubscriber::topic_callback, 
+            this, std::placeholders::_1)
         );
     }
 
@@ -23,12 +23,12 @@ private:
     void topic_callback(const Student & msg) const
     {
         RCLCPP_INFO(this->get_logger(), "订阅的学生消息：name=%s,age=%d,height=%.2f",
-            msg.name.c_str(), msg.age, msg.height);
+        msg.name.c_str(), msg.age, msg.height);
     }
     rclcpp::Subscription<Student>::SharedPtr subscription_;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<MinimalSubscriber>());
