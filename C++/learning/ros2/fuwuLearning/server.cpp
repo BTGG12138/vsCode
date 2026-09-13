@@ -3,15 +3,14 @@
 
 using cpp_demo::srv::AddInts;
 
-using std::placeholders::_1;
-using std::placeholders::_2;
-
 // 3.定义节点类；
 class MinimalService: public rclcpp::Node{
   public:
     MinimalService():Node("minimal_service"){
       // 3-1.创建服务端；
-      server = this->create_service<AddInts>("add_ints",std::bind(&MinimalService::add, this, _1, _2));
+      server = this->create_service<AddInts>
+      ("add_ints",std::bind(&MinimalService::add, this,
+      std::placeholders::_1,std::placeholders::_2));
       RCLCPP_INFO(this->get_logger(),"add_ints 服务端启动完毕，等待请求提交...");
     }
   private:
@@ -23,14 +22,13 @@ class MinimalService: public rclcpp::Node{
     }
 };
 
-int main(int argc, char const *argv[])
+int main(int argc, char const **argv)
 {
   // 2.初始化 ROS2 客户端；
   rclcpp::init(argc,argv);
 
   // 4.调用spin函数，并传入节点对象指针；
-  auto server = std::make_shared<MinimalService>();
-  rclcpp::spin(server);
+  rclcpp::spin(std::make_shared<MinimalService>());
 
   // 5.释放资源。
   rclcpp::shutdown();

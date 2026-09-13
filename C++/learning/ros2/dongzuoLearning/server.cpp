@@ -2,7 +2,6 @@
 #include "rclcpp_action/rclcpp_action.hpp"
 #include "cpp_demo/action/progress.hpp"
 
-using namespace std::placeholders;
 using cpp_demo::action::Progress;
 using GoalHandleProgress = rclcpp_action::ServerGoalHandle<Progress>;
 
@@ -18,9 +17,12 @@ public:
     this->action_server_ = rclcpp_action::create_server<Progress>(
       this,
       "get_sum",
-      std::bind(&MinimalActionServer::handle_goal, this, _1, _2),
-      std::bind(&MinimalActionServer::handle_cancel, this, _1),
-      std::bind(&MinimalActionServer::handle_accepted, this, _1));
+      std::bind(&MinimalActionServer::handle_goal, this, 
+      std::placeholders::_1,std::placeholders::_2),
+      std::bind(&MinimalActionServer::handle_cancel, this, 
+      std::placeholders::_1),
+      std::bind(&MinimalActionServer::handle_accepted, this,
+      std::placeholders::_1));
     RCLCPP_INFO(this->get_logger(),"动作服务端创建，等待请求...");
   }
 

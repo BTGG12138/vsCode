@@ -2,10 +2,10 @@
 #include "cpp_demo/srv/add_ints.hpp"
 
 using cpp_demo::srv::AddInts;
-using namespace std::chrono_literals;
 
 // 3.定义节点类；
-class MinimalClient: public rclcpp::Node{
+class MinimalClient: public rclcpp::Node
+{
   public:
     MinimalClient():Node("minimal_client"){
       // 3-1.创建客户端；
@@ -14,7 +14,7 @@ class MinimalClient: public rclcpp::Node{
     }
     // 3-2.等待服务连接；
     bool connect_server(){
-      while (!client->wait_for_service(1s))
+      while (!client->wait_for_service(std::chrono::milliseconds(500)))
       {
         if (!rclcpp::ok())
         {
@@ -27,19 +27,19 @@ class MinimalClient: public rclcpp::Node{
       return true;
     }
     // 3-3.组织请求数据并发送；
-    rclcpp::Client<AddInts>::FutureAndRequestId send_request(int32_t num1, int32_t num2){
+    rclcpp::Client<AddInts>::FutureAndRequestId send_request(int32_t num1, int32_t num2)
+    {
       auto request = std::make_shared<AddInts::Request>();
       request->num1 = num1;
       request->num2 = num2;
       return client->async_send_request(request);
     }
 
-
   private:
     rclcpp::Client<AddInts>::SharedPtr client;
 };
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
   if (argc != 3){
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"),"请提交两个整型数据！");
@@ -66,7 +66,9 @@ int main(int argc, char ** argv)
     RCLCPP_INFO(client->get_logger(),"请求正常处理");
     RCLCPP_INFO(client->get_logger(),"响应结果:%d!", response.get()->sum);
 
-  } else {
+  } 
+  else 
+  {
     RCLCPP_INFO(client->get_logger(),"请求异常");
   }
 

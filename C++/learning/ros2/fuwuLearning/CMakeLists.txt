@@ -14,23 +14,16 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/AddInts.srv"
-  DEPENDENCIES std_msgs
 )
 
 rosidl_get_typesupport_target(cpp_demo_typesupport 
 ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 add_executable(server src/server.cpp)
-ament_target_dependencies(
-  server
-  "rclcpp"
-)
+ament_target_dependencies(server "rclcpp")
 target_link_libraries(server "${cpp_demo_typesupport}")
 add_executable(client src/client.cpp)
-ament_target_dependencies(
-  client
-  "rclcpp"
-)
+ament_target_dependencies(client "rclcpp")
 target_link_libraries(client "${cpp_demo_typesupport}")
 install(TARGETS 
   server
