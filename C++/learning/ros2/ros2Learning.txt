@@ -13,7 +13,7 @@ colcon build --symlink-install --packages-select cpp_demo
 source install/setup.bash
 ros2 run cpp_demo Learning
 
-5.查看自定义消息接口
+5.查看自定义消息接口,不用加文件后缀
 . install/setup.bash
 ros2 interface show cpp_demo/msg/Student
 
