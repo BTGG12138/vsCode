@@ -24,3 +24,6 @@ ros2 topic list
 <build_depend>rosidl_default_generators</build_depend>
 <exec_depend>rosidl_default_runtime</exec_depend>
 <member_of_group>rosidl_interface_packages</member_of_group>
+
+8.终端启用小海龟界面
+ros2 run turtlesim turtlesim_node
