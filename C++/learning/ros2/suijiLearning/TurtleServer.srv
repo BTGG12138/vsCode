@@ -1,0 +1,6 @@
+float32 x_target
+float32 y_target
+---
+int8 result
+int8 SUCCESS=1
+int8 FAIL=0

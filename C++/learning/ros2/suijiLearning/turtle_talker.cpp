@@ -18,6 +18,7 @@ class turtle:public rclcpp::Node
         double speed_k_target=0.4;
         double speed_max_target=1.0;
         bool arrive=false;
+        bool isArrive=false;
         void on_pose_received(const turtlesim::msg::Pose::SharedPtr pose)
         {
             auto x_now=pose->x;
@@ -44,6 +45,11 @@ class turtle:public rclcpp::Node
                 msg.linear.x=0.0;
                 msg.angular.z=0.0;
                 arrive=true;
+                if(!isArrive)
+                {
+                    isArrive=true;
+                    RCLCPP_INFO(this->get_logger(),"到了");
+                }
             }
             publisher_->publish(msg);
         }
@@ -62,8 +68,9 @@ class turtle:public rclcpp::Node
                 this->x_target=request->x_target;
                 this->y_target=request->y_target;
                 response->result=TurtleServer::Response::SUCCESS;
-                 RCLCPP_INFO(this->get_logger(),"目的地为X%f,Y%f",request->x_target,request->y_target);
+                RCLCPP_INFO(this->get_logger(),"目的地为X%f,Y%f",request->x_target,request->y_target);
                 arrive=false;
+                isArrive=false;
             }
             else
             {
