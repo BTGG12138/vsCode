@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <let name="urdf_file" value="$(find-pkg-share cpp_demo)/urdf/first_robot.urdf"/>
+
+  <!-- 读取urdf文本，赋值给robot_description参数 -->
+  <let name="robot_desc" value="$(command 'cat $(var urdf_file)')"/>
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="robot_description" value="$(var robot_desc)"/>
+  </node>
+
+  <node pkg="joint_state_publisher" exec="joint_state_publisher" name="joint_state_publisher" output="screen"/>
+  <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen"/>
+</launch>
