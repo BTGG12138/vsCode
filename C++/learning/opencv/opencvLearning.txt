@@ -1,0 +1,5 @@
+1.编译文件
+cd C:\opencv\opencv
+cl /EHsc /I C:\opencv\build\include opencv\文件名称 /link /LIBPATH:C:\opencv\build\x64\vc16\lib opencv_world481.lib
+
+2.
