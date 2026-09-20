@@ -6,11 +6,10 @@ int main()
 {
     // 完整绝对路径
     cv::Mat src = cv::imread("C:\\opencv\\opencv\\12138.bmp");
-    std::cout << "cols:" << src.cols << ", rows:" << src.rows << std::endl;
 
     if (src.empty())
     {
-        std::cout << "cant see" << std::endl;
+        std::cout << "can not see" << std::endl;
         system("pause");
         return 1;
     }
