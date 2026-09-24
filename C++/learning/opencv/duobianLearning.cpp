@@ -3,18 +3,19 @@
 
 int main()
 {
+    cv::RNG rng(time(0));
     cv::Mat src01,src02,src03;
     bool isW=false;
     int z=0;
+    int num=rng.uniform(2,8);
     std::vector<std::vector<cv::Point>> pointss;
-    cv::RNG rng(time(0));
 
     src01=cv::Mat::zeros(cv::Size(512,512),CV_8UC3);
     cv::imshow("result",src01);
     while(1)
     {
         char key=cv::waitKey(10);
-        if(key=='q')
+        if(key=='q'||z==num)
         {
             break;
         }
@@ -28,9 +29,8 @@ int main()
             isW=true;
             std::vector<cv::Point> points;
             int x,y;
-            x=rng.uniform(2,8);
             cv::Point p;
-            for(int j=0;j<x;j++)
+            for(int j=0;j<num;j++)
             {
                 for(int i=0;i<4;i++)
                 {
