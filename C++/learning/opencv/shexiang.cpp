@@ -31,7 +31,6 @@ int main()
             cv::imshow("Camera", src01);
         }
 
-        // waitKey(1) 等待1ms；按q退出
         if (key == 'q')
         {
             break;
