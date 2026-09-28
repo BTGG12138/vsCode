@@ -73,7 +73,15 @@ void part4()
 {
     Mat src00,src01;
     src00=imread("C:\\opencv\\opencv\\12138.bmp");
-    GaussianBlur(src00,src01,Size(0,0),15);
+    GaussianBlur(src00,src01,Size(5,5),10);
+    imshow("result",src01);
+    waitKey(0);
+}
+void part5()
+{
+    Mat src00,src01;
+    src00=imread("C:\\opencv\\opencv\\12138.bmp");
+    bilateralFilter(src00,src01,0,100,10);
     imshow("result",src01);
     waitKey(0);
 }
@@ -82,5 +90,6 @@ int main()
     //part1();
     //part2();
     //part3();
-    part4();
+    //part4();
+    part5();
 }
