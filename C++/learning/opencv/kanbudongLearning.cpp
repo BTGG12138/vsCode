@@ -61,8 +61,26 @@ void part2()
     imshow("result", result);
     waitKey(0);
 }
+void part3()
+{
+    Mat src00,src01;
+    src00=imread("C:\\opencv\\opencv\\12138.bmp");
+    blur(src00,src01,Size(3,3),Point(-1,-1));
+    imshow("result",src01);
+    waitKey(0);
+}
+void part4()
+{
+    Mat src00,src01;
+    src00=imread("C:\\opencv\\opencv\\12138.bmp");
+    GaussianBlur(src00,src01,Size(0,0),15);
+    imshow("result",src01);
+    waitKey(0);
+}
 int main()
 {
     //part1();
-    part2();
+    //part2();
+    //part3();
+    part4();
 }
