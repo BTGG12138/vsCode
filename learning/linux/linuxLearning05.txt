@@ -1,0 +1,15 @@
+rr record -n 文件名称                           #录制程序
+rr replay                                      #回放，进入调试界面
+n                                              #正常往前走一行代码
+rn                                             #反向走一行代码
+s                                              #往前，跳进函数
+rs                                             #反向，退出函数
+watch                                          #变量名：盯住这个变量，一旦值变了就停下
+rc                                             #反向持续运行，直到触发watch/断点
+time                                           #测运行耗时、CPU、内存占用；性能评估
+strace                                         #看程序和内核交互
+valgrind                                       #C/C++内存错误检测
+htop                                           #开发调试最常用的进程观察工具
+opensnoop                                      #查文件找不到
+perf                                           #CPU 热点、缓存、IPC、性能采样
+gnuplot                                        #命令行绘图工具
