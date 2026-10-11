@@ -14,3 +14,9 @@ clone                                   #克隆仓库
 fetch                                   #获取最新提交到本地
 diff                                    #查看代码差异
 pull                                    #合并最新提交到本地
+
+pip                                     #Python官方包管理器
+uv                                      #Rust编写的新一代Python项目&包管理器
+docker                                  #操作系统级容器虚拟化工具
+systemd                                 #后台总管程序
+URL                                     #统一资源定位符
