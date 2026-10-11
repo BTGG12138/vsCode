@@ -1,0 +1,16 @@
+git init                                #初始化仓库
+add                                     #将文件放入暂存区
+commit                                  #提交到本地仓库
+status                                  #查看工作区和暂存区状态
+log                                     #查看提交日志
+log --graph                             #图形化查看提交日志
+log -p                                  #查看提交日志和修改差异
+branch                                  #创建新分支
+branch -d                               #删除指定分支
+switch                                  #切换指定分支
+merge                                   #将目标分支合并到当前分支
+revert                                  #反向提交
+clone                                   #克隆仓库
+fetch                                   #获取最新提交到本地
+diff                                    #查看代码差异
+pull                                    #合并最新提交到本地
