@@ -1,5 +1,6 @@
 git init                                #初始化仓库
 add                                     #将文件放入暂存区
+add -perf                               #交互式，分段挑选代码块加入暂存区
 commit                                  #提交到本地仓库
 status                                  #查看工作区和暂存区状态
 log                                     #查看提交日志
