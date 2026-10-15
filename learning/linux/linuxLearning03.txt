@@ -2,3 +2,11 @@ ctrl+alt+t                              #打开终端
 printenv                                #与“echo $”相同，打印环境变量 
 rm -rf *                                #删除此文件夹下所有文件
 mkdir -p 文件夹地址                      #创建母文件夹和子文件夹
+pwd                                     #打印当前工作目录
+sort -n                                 #数字排序输出
+sed -i.bak '/^$/d' 文件名称              #删除文件空行    
+$()                                     #把括号里面命令的输出结果，捕获出来，当成字符串使用
+seq                                     #指定步长 seq 起点 步长 终点
+magick pic.png pic.jpg                  #格式转换
+magick pic.jpg -resize 50% out.jpg      #百分比缩放
+magick *.jpg out.pdf                    #多张图片合并为 PDF
