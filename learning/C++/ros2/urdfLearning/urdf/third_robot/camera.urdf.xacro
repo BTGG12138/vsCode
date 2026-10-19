@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="camera_link" params="camera_name xyz">
+        <link name="${camera_name}_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.04 0.04"/>  
+                </geometry>
+                <material name="black">
+                    <color rgba="0.0 0.0 0.0 0.5"/>
+                </material>
+            </visual>
+        </link>
+
+        <joint name="${camera_name}_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="${camera_name}_link"/>
+            <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
+        </joint>
+    </xacro:macro>
+</robot>
