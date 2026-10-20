@@ -17,6 +17,19 @@
         <color rgba="1.0 1.0 1.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.2 0.2 0.12"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.004533333333333334" ixy="0.0" ixz="0.0" iyy="0.004533333333333334" iyz="0.0" izz="0.006666666666666668"/>
+    </inertial>
   </link>
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
@@ -33,6 +46,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.04 0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.00013333333333333334" ixy="0.0" ixz="0.0" iyy="0.00013333333333333334" iyz="0.0" izz="0.00013333333333333334"/>
+    </inertial>
   </link>
   <joint name="camera01_joint" type="fixed">
     <parent link="base_link"/>
@@ -49,6 +75,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.04 0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.00013333333333333334" ixy="0.0" ixz="0.0" iyy="0.00013333333333333334" iyz="0.0" izz="0.00013333333333333334"/>
+    </inertial>
   </link>
   <joint name="camera02_joint" type="fixed">
     <parent link="base_link"/>
@@ -65,6 +104,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+      <geometry>
+        <cylinder length="0.10" radius="0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0004291666666666667" ixy="0.0" ixz="0.0" iyy="0.0004291666666666667" iyz="0.0" izz="2.5e-05"/>
+    </inertial>
   </link>
   <link name="laser">
     <visual>
@@ -76,6 +128,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.02"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="6.666666666666666e-05" ixy="0.0" ixz="0.0" iyy="6.666666666666666e-05" iyz="0.0" izz="0.0001"/>
+    </inertial>
   </link>
   <joint name="laser_joint" type="fixed">
     <parent link="laser_link"/>
@@ -97,6 +162,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0002666666666666666" ixy="0.0" ixz="0.0" iyy="0.0002666666666666666" iyz="0.0" izz="0.0004"/>
+    </inertial>
   </link>
   <joint name="wheel01_joint" type="fixed">
     <parent link="base_link"/>
@@ -113,6 +191,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0002666666666666666" ixy="0.0" ixz="0.0" iyy="0.0002666666666666666" iyz="0.0" izz="0.0004"/>
+    </inertial>
   </link>
   <joint name="wheel02_joint" type="fixed">
     <parent link="base_link"/>
@@ -129,6 +220,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0002666666666666666" ixy="0.0" ixz="0.0" iyy="0.0002666666666666666" iyz="0.0" izz="0.0004"/>
+    </inertial>
   </link>
   <joint name="wheel03_joint" type="fixed">
     <parent link="base_link"/>
@@ -145,6 +249,19 @@
         <color rgba="0.0 0.0 0.0 0.5"/>
       </material>
     </visual>
+    <collision>
+      <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.5"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0002666666666666666" ixy="0.0" ixz="0.0" iyy="0.0002666666666666666" iyz="0.0" izz="0.0004"/>
+    </inertial>
   </link>
   <joint name="wheel04_joint" type="fixed">
     <parent link="base_link"/>

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find cpp_demo)/urdf/inertial.xacro"/>
     <xacro:macro name="base_link" params="xyz">
 
         <link name="base_shadow">
@@ -15,6 +16,18 @@
                     <color rgba="1.0 1.0 1.0 0.5"/>
                 </material>
             </visual>
+
+            <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${xyz}"/>
+                </geometry>
+                <material name="white">
+                    <color rgba="1.0 1.0 1.0 0.5"/>
+                </material>
+            </collision>
+
+            <xacro:box_inertia m="1.0" w="0.2" h="0.2" d="0.12"/>
         </link>
 
         <joint name="base_joint" type="fixed">
