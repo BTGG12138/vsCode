@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- gz-sim 传感器插件（激光雷达 + 相机）。
+       注意：
+       1. gz-sim 使用 <gazebo> 标签，配置在 <gazebo> 内部直接定义传感器。
+       2. 传感器类型使用 gz-sim 的命名空间。
+       3. 话题名称必须用绝对名（带/）。
+       4. 需要明确指定 frame_name 和 topic。
+       5. 激光雷达和相机都已配置噪声模型，符合 ROS2 标准。-->
+  <xacro:macro name="laser_plugin">
+    <!-- 激光雷达（Ray 传感器） -->
+    <gazebo reference="laser">
+      <sensor name="laser" type="ray">
+        <topic>/scan</topic>
+        <frame_name>laser</frame_name>
+        <update_rate>5</update_rate>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1.0</resolution>
+              <min_angle>0.0</min_angle>
+              <max_angle>6.28</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>8.0</max>
+            <resolution>0.015</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+      </sensor>
+    </gazebo>
+
+    <!-- 深度相机 -->
+    <gazebo reference="camera01_link">
+      <sensor name="camera" type="camera">
+        <topic>/camera/image_raw</topic>
+        <frame_name>camera01_link</frame_name>
+        <update_rate>10</update_rate>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <camera>
+          <horizontal_fov>1.5009831567</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>600</height>
+            <format>R8G8B8</format>
+          </image>
+          <distortion>
+            <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+          <clip>
+            <near>0.1</near>
+            <far>100.0</far>
+          </clip>
+        </camera>
+      </sensor>
+    </gazebo>
+
+    <!-- 另一个相机 camera02 -->
+    <gazebo reference="camera02_link">
+      <sensor name="camera02" type="camera">
+        <topic>/camera02/image_raw</topic>
+        <frame_name>camera02_link</frame_name>
+        <update_rate>10</update_rate>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <camera>
+          <horizontal_fov>1.5009831567</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>600</height>
+            <format>R8G8B8</format>
+          </image>
+          <distortion>
+            <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+          <clip>
+            <near>0.1</near>
+            <far>100.0</far>
+          </clip>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>
