@@ -1,34 +1,87 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:macro name="wheel_link" params="wheel_name xyz">
-        <link name="${wheel_name}_link">
-            <visual>
-                <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
-                <geometry>
-                    <cylinder length="0.04" radius="0.04"/>
-                </geometry>
-                <material name="black">
-                    <color rgba="0.0 0.0 0.0 0.5"/>
-                </material>
-            </visual>
+  <!-- 轮子专用圆柱惯性宏（勿与 inertial.xacro 里的 cylinder_inertia 重名）-->
+  <!-- 圆柱几何轴沿Y（visual/collision已旋转90°），关节axis=0 1 0，即绕Y旋转 -->
+  <xacro:macro name="wheel_cylinder_inertia" params="m r h">
+    <inertial>
+      <mass value="${m}"/>
+      <inertia
+        ixx="${m*(3*r*r + h*h)/12}"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="${0.5*m*r*r}"
+        izz="${m*(3*r*r + h*h)/12}"
+        iyz="0.0"
+      />
+    </inertial>
+  </xacro:macro>
 
-            <collision>
-                <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
-                    <geometry>
-                        <cylinder length="0.04" radius="0.04"/>
-                    </geometry>
-                    <material name="black">
-                        <color rgba="0.0 0.0 0.0 0.5"/>
-                    </material>
-            </collision>
+  <!-- 驱动轮：revolute 差速控制，摩擦大保证抓地 -->
+  <xacro:macro name="drive_wheel" params="wheel_name xyz">
+    <link name="${wheel_name}_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
+        <geometry>
+          <cylinder length="0.04" radius="0.04"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
+        <geometry>
+          <cylinder length="0.04" radius="0.04"/>
+        </geometry>
+      </collision>
+      <xacro:wheel_cylinder_inertia m="0.5" r="0.04" h="0.04" />
+    </link>
+    <!-- continuous：轮子必须用连续旋转。revolute不写lower/upper默认0~0，轮子会被锁死 -->
+    <joint name="${wheel_name}_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${wheel_name}_link"/>
+      <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
+      <!-- 圆柱轴沿Y，必须显式指定转轴；正向速度=前进(+X) -->
+      <axis xyz="0 1 0"/>
+      <limit effort="20.0" velocity="10.0"/>
+    </joint>
+    <gazebo reference="${wheel_name}_link">
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+  </xacro:macro>
 
-            <xacro:cylinder_inertia m="0.5" r="0.04" h="0.04" />
-        </link>
-
-        <joint name="${wheel_name}_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="${wheel_name}_link"/>
-            <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
-        </joint>
-    </xacro:macro>
+  <!-- 随动轮：自由旋转revolute，effort=0无驱动力 -->
+  <!-- 摩擦调低：4轮均为平行Y轴轮，转向靠横向打滑，摩擦太大会转不动 -->
+  <xacro:macro name="passive_wheel" params="wheel_name xyz">
+    <link name="${wheel_name}_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
+        <geometry>
+          <cylinder length="0.04" radius="0.04"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.5708 0.0 0.0"/>
+        <geometry>
+          <cylinder length="0.04" radius="0.04"/>
+        </geometry>
+      </collision>
+      <xacro:wheel_cylinder_inertia m="0.5" r="0.04" h="0.04" />
+    </link>
+    <joint name="${wheel_name}_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${wheel_name}_link"/>
+      <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0.0" velocity="10.0"/>
+    </joint>
+    <gazebo reference="${wheel_name}_link">
+      <mu1>0.3</mu1>
+      <mu2>0.3</mu2>
+    </gazebo>
+  </xacro:macro>
 </robot>

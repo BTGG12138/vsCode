@@ -35,5 +35,6 @@
             <child link="base_shadow"/>
             <origin xyz="0.0 0.0 -0.095" rpy="0.0 0.0 0.0"/>
         </joint>
+
     </xacro:macro>
 </robot>

@@ -1,18 +1,25 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="third_robot">
+  <xacro:include filename="$(find cpp_demo)/urdf/third_robot/base.urdf.xacro"/>
+  <xacro:include filename="$(find cpp_demo)/urdf/third_robot/camera.urdf.xacro"/>
+  <xacro:include filename="$(find cpp_demo)/urdf/third_robot/laser.urdf.xacro"/>
+  <xacro:include filename="$(find cpp_demo)/urdf/third_robot/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find cpp_demo)/urdf/diff_drive_plugin.xacro"/>
 
-<xacro:include filename="$(find cpp_demo)/urdf/third_robot/base.urdf.xacro"/>
-<xacro:include filename="$(find cpp_demo)/urdf/third_robot/camera.urdf.xacro"/>
-<xacro:include filename="$(find cpp_demo)/urdf/third_robot/laser.urdf.xacro"/> 
-<xacro:include filename="$(find cpp_demo)/urdf/third_robot/wheel.urdf.xacro"/>
+  <!-- 底盘 0.2(x) 0.2(y) 0.12(z) -->
+  <xacro:base_link xyz="0.2 0.2 0.12"/>
 
-<xacro:base_link xyz="0.2 0.2 0.12"/>
-<xacro:camera_link camera_name="camera01" xyz="0.04 -0.04 0.08"/>
-<xacro:camera_link camera_name="camera02" xyz="0.04 0.04 0.08"/>
-<xacro:laser_link xyz="0.0 0.0 0.05"/>
-<xacro:wheel_link wheel_name="wheel01" xyz="0.05 0.1 -0.06"/>
-<xacro:wheel_link wheel_name="wheel02" xyz="0.05 -0.1 -0.06"/>
-<xacro:wheel_link wheel_name="wheel03" xyz="-0.05 0.1 -0.06"/>
-<xacro:wheel_link wheel_name="wheel04" xyz="-0.05 -0.1 -0.06"/>
+  <xacro:camera_link camera_name="camera01" xyz="0.04 -0.04 0.08"/>
+  <xacro:camera_link camera_name="camera02" xyz="0.04 0.04 0.08"/>
+  <xacro:laser_link xyz="0.0 0.0 0.05"/>
 
+  <!-- 驱动轮 -->
+  <xacro:drive_wheel wheel_name="wheel01" xyz="0.05 0.1 -0.06"/>
+  <xacro:drive_wheel wheel_name="wheel02" xyz="0.05 -0.1 -0.06"/>
+  <!-- 随动轮 -->
+  <xacro:passive_wheel wheel_name="wheel03" xyz="-0.05 0.1 -0.06"/>
+  <xacro:passive_wheel wheel_name="wheel04" xyz="-0.05 -0.1 -0.06"/>
+
+  <!-- 加载差速插件 -->
+  <xacro:diff_drive_plugin/>
 </robot>
