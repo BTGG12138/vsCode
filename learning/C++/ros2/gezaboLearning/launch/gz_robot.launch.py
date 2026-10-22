@@ -2,6 +2,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -54,20 +55,39 @@ def generate_launch_description():
             # GZ -> ROS TF
             '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
             # ========== 修改joint_state桥接，移除写死的world名 ==========
-            '/model/third_robot/joint_state@sensor_msgs/msg/JointState@gz.msgs.JointState',
-            # 激光雷达
-            '/model/third_robot/link/laser_link/sensor/laserscan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+            '/model/third_robot/joint_state@sensor_msgs/msg/JointState[gz.msgs.JointState',
+            # ========== 激光雷达（话题与 laser_plugin.xacro 里的 <topic>/scan</topic> 一致） ==========
+            '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+            # ========== 深度相机 camera01（rgbd_camera 自动派生出的子话题） ==========
+            '/depth_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/depth_camera/depth_image@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/depth_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked',
+            '/depth_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
+            # ========== RGB 相机 camera02 ==========
+            '/camera02/image_raw@sensor_msgs/msg/Image[gz.msgs.Image',
+            '/camera02/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
             # 仿真时钟
             '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock',
         ],
         output='screen'
     )
 
+    # rviz2：显示机器人模型、激光雷达扫描、深度相机点云/图像
+    rviz2 = Node(
+        package='rviz2',
+        executable='rviz2',
+        arguments=['-d', os.path.join(pkg_cpp_demo, 'config', 'third_robot.rviz')],
+        condition=IfCondition(LaunchConfiguration('rviz')),
+        output='screen'
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument('world', default_value=default_world),
+        DeclareLaunchArgument('rviz', default_value='true', description='启动 rviz2'),
         robot_state_publisher,
         joint_state_publisher, # 加入节点
         gz_sim,
         create_robot,
-        bridge
+        bridge,
+        rviz2
     ])
