@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- 长方体惯性宏
+      params: m质量(kg), w:x方向长度, h:y方向长度, d:z方向长度
+      惯性中心在box几何中心
+  -->
+  <xacro:macro name="box_inertia" params="m w h d">
+    <inertial>
+      <mass value="${m}" />
+      <inertia 
+        ixx="${(m/12) * (h*h + d*d)}" 
+        ixy="0.0" 
+        ixz="0.0" 
+        iyy="${(m/12) * (w*w + d*d)}"
+        izz="${(m/12) * (w*w + h*h)}"
+        iyz="0.0"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- 圆柱体惯性宏
+      params: m质量(kg), r半径, h圆柱体长度(轴线沿link的Z轴)
+  -->
+  <xacro:macro name="cylinder_inertia" params="m r h">
+    <inertial>
+      <mass value="${m}" />
+      <inertia 
+        ixx="${(m/12) * (3*r*r + h*h)}" 
+        ixy="0.0" 
+        ixz="0.0" 
+        iyy="${(m/12) * (3*r*r + h*h)}"
+        izz="${0.5 * m * r * r}"
+        iyz="0.0"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- 实心球体惯性宏
+      params: m质量(kg), r球半径
+  -->
+  <xacro:macro name="sphere_inertia" params="m r">
+    <inertial>
+      <mass value="${m}" />
+      <inertia 
+        ixx="${(2/5) * m * r * r}" 
+        ixy="0.0" 
+        ixz="0.0" 
+        iyy="${(2/5) * m * r * r}"
+        izz="${(2/5) * m * r * r}"
+        iyz="0.0"/>
+    </inertial>
+  </xacro:macro>
+
+</robot>
