@@ -74,7 +74,7 @@
     </model>
     <model name='wall_north'>
       <static>true</static>
-      <pose>9.0723104476928711 -1.8789000511169434 1.25 0 0 0</pose>
+      <pose>4.4770207405090332 -1.8789000511169434 1.25 0 0 0</pose>
       <link name='link'>
         <visual name='vis'>
           <cast_shadows>true</cast_shadows>
@@ -168,7 +168,7 @@
     </model>
     <model name='wall_east'>
       <static>true</static>
-      <pose>3.8334550857543945 -7.0432887077331543 1.25 0 0 1.5708000357176291</pose>
+      <pose>3.8334431648254395 -2.4974567890167236 1.25 0 0 1.5708000357176291</pose>
       <link name='link'>
         <visual name='vis'>
           <cast_shadows>true</cast_shadows>
@@ -262,195 +262,7 @@
     </model>
     <model name='wall_horizontal'>
       <static>true</static>
-      <pose>2.9417169094085693 -4.8917598724365234 1.25 0 0 0</pose>
-      <link name='link'>
-        <visual name='vis'>
-          <cast_shadows>true</cast_shadows>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <material>
-            <diffuse>0.600000024 0.600000024 0.600000024 1</diffuse>
-            <specular>0.100000001 0.100000001 0.100000001 1</specular>
-          </material>
-        </visual>
-        <collision name='col'>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <inertial>
-          <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='wall_vertical'>
-      <static>true</static>
-      <pose>6.5937213897705078 0.48677054047584534 1.25 0 0 1.5708000357176291</pose>
-      <link name='link'>
-        <visual name='vis'>
-          <cast_shadows>true</cast_shadows>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <material>
-            <diffuse>0.600000024 0.600000024 0.600000024 1</diffuse>
-            <specular>0.100000001 0.100000001 0.100000001 1</specular>
-          </material>
-        </visual>
-        <collision name='col'>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <inertial>
-          <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='wall_vertical_1'>
-      <static>true</static>
-      <pose>7.5318784212734107 -5.0307275386638057 1.25 0 0 1.5708000357176291</pose>
-      <link name='link'>
-        <visual name='vis'>
-          <cast_shadows>true</cast_shadows>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <material>
-            <diffuse>0.600000024 0.600000024 0.600000024 1</diffuse>
-            <specular>0.100000001 0.100000001 0.100000001 1</specular>
-          </material>
-        </visual>
-        <collision name='col'>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <inertial>
-          <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='wall_vertical_2'>
-      <static>true</static>
-      <pose>4.6340340335090549 -2.9224513815022846 1.25 0 0 1.5708000357176291</pose>
-      <link name='link'>
-        <visual name='vis'>
-          <cast_shadows>true</cast_shadows>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <material>
-            <diffuse>0.600000024 0.600000024 0.600000024 1</diffuse>
-            <specular>0.100000001 0.100000001 0.100000001 1</specular>
-          </material>
-        </visual>
-        <collision name='col'>
-          <geometry>
-            <box>
-              <size>0.20000000000000001 5.5 2.5</size>
-            </box>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <inertial>
-          <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='wall_horizontal_1'>
-      <static>true</static>
-      <pose>1.0642795752000773 3.3463926752158644 1.25 0 0 0</pose>
+      <pose>1.2963600158691406 -3.1982295513153076 1.25 0 0 0</pose>
       <link name='link'>
         <visual name='vis'>
           <cast_shadows>true</cast_shadows>
