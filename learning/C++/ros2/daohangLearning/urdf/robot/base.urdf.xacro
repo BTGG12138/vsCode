@@ -3,6 +3,19 @@
 <xacro:include filename="$(find cpp_demo)/urdf/inertial.xacro"/>
     <xacro:macro name="base_link" params="xyz">
 
+        <!-- 根link：无惯性的 dummy link。
+             kdl_parser 要求根 link 不能带惯性，否则 robot_state_publisher
+             每次启动都会告警；base_footprint 同时也是轮子接地点的投影，
+             与差速插件 odom->base_footprint 的 TF 数值严格一致 -->
+        <link name="base_footprint"/>
+
+        <joint name="base_footprint_joint" type="fixed">
+            <parent link="base_footprint"/>
+            <child link="base_link"/>
+            <!-- 轮轴中心在 base_link 下方 0.06，轮半径 0.04，接地点即 -0.10 -->
+            <origin xyz="0.0 0.0 0.10" rpy="0.0 0.0 0.0"/>
+        </joint>
+
         <link name="base_shadow">
 
         </link>
