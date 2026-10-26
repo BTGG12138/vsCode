@@ -1,4 +1,4 @@
 {
-    "Codegeex.CompletionDelay": 3,
-    "Codegeex.GenerationPreference": "line by line"
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "cmake.sourceDirectory": "/home/btgg/Desktop/vsSoup/_ws/cpp_demo"
 }
