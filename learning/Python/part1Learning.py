@@ -29,7 +29,6 @@ z=float(x)/float(y)
 print("这个", z)
 """
 
-z_round = float(input("输入1000.005\n"))
 #round()四舍五入是银行家算法，取最近的偶数
 #只有第一位小数是5时才会出现银行家算法
 #math.trunc()取整数部分
@@ -39,7 +38,11 @@ def normal_round(num, dec=2):
     #十的dec次方
     return int(num*s + 0.5)/s
     #+0.5是为了四舍五入
-z_round = normal_round(z_round)
-print(f"{z_round:,}")
+
+#防止调用的时候直接执行裸露在外的代码
+if __name__ == "__main__":
+    z_round = float(input("输入1000.005\n"))
+    z_round = normal_round(z_round)
+    print(f"{z_round:,}")
 
 #记得结尾调用主函数
