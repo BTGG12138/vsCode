@@ -33,13 +33,44 @@ while True:
     file.write(num)
 """
 
+"""
 with open("nums.txt",'r') as file:
 #    lines=file.readlines()
 #for line in lines:
     for line in file:
         print("数字是 ",line.rstrip())
-nums=[]
 with open("nums.csv") as file:
     for line in file:
-        num=line.rstrip().split(',')
-        print("这是",num[1])
+#       num=line.rstrip().split(',')
+#       print("这是",num[1])
+        player,num=line.rstrip().split(',')
+        print("这是",num)
+"""
+
+"""
+players=[]
+with open("nums.csv") as file:
+    for line in file:
+        name,num=line.rstrip().split(',')
+#       player={}
+#       player["name"]=name
+#       player["num"]=num
+        player={"name":name,"num":num}
+        players.append(player)
+def  player_num(player):
+    return player["num"]
+#for player in sorted(players,key=player_num):
+#key值要传函数名
+for player in sorted(players,key=lambda player:player["num"]):
+#lambda 参数: 返回值
+    print("选手",player["name"],"拿了",player["num"],"个冠军")
+"""
+
+import csv
+players = []
+with open("nums.csv") as file:
+    reader = csv.reader(file)
+    for name, num in reader:
+        players.append({"name": name, "num": num})
+for player in sorted(players, key=lambda player: player["num"]):
+    print("选手",player["name"],"拿了",player["num"],"个冠军")
