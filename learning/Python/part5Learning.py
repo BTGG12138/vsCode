@@ -42,7 +42,8 @@ images[0].save(
 
 import re
 email = input("What's your email? ").strip()
-if re.search(r"^[^@]+@[^@]+\.edu$", email):
+#if re.search(r"^[^@]+@[^@]+\.edu$", email):
+if re.search(r"^[0-9]+@qq\.com$",email):
     print("Valid")
 else:
     print("Invalid")
@@ -51,3 +52,14 @@ else:
 #$      匹配整个字符串的最后面
 #[]     匹配括号里任意一个字符
 #[^]    匹配任意一个不是的字符
+#大写就是取反
+#\d     数字 0~9
+#\s     空白字符：空格、Tab、换行 `\n`
+#\w     字母 a-z、A-Z，数字 0-9，下划线 `_`
+#|      匹配 A 或者 B
+#()     会保存匹配到的内容
+#(?)    但是不保存结果，不能单独提取
+
+#re.IGNORECASE  忽略大小写匹配
+#re.MULTILINE   多行模式，让 ^ 和 $ 匹配每一行的开头、结尾
+#re.DOTALL      让 . 可以匹配换行符 \n
