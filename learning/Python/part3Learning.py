@@ -1,9 +1,3 @@
-from random import choice
-import random
-import statistics
-import sys
-import requests
-
 """
 try:
     num = int(input("请输入一个数字:\n"))
@@ -17,6 +11,8 @@ else:
 """
 
 """
+from random import choice
+import random
 coin=choice(["正面","反面"])
 print(coin)
 coin=random.randint(0,1)
@@ -31,12 +27,17 @@ for player in players:
 """
 
 """
+import statistics
+import sys
 print(statistics.mean([1,2,3,4,5]))
+#求算术平均值
 print("文件名:",sys.argv[0])
 for arg in sys.argv[1:-1]:
+#从第一个参数，到倒数第二个参数
     print("参数:",arg)
 """
 
+import requests
 response = requests.get("https://httpbin.org/get", timeout=5)
 j = response.json()
 print(j)

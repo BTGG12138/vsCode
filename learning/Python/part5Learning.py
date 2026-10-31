@@ -71,7 +71,7 @@ else:
 import re
 name = input("What's your name? ").strip()
 if matches := re.search(r"^(.+), *(.+)$", name):
-#   判断的同时赋值
+#判断的同时赋值
     name = matches.group(2) + " " + matches.group(1)
 print(f"hello, {name}")
 #这里的group从1开始计数

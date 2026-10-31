@@ -1,6 +1,5 @@
-from part1Learning import normal_round
-
 """
+from part1Learning import normal_round
 x = input("输入三位及以上小数\n")
 num = float(x)
 y = normal_round(num)
@@ -39,6 +38,7 @@ with open("nums.txt",'r') as file:
 #for line in lines:
     for line in file:
         print("数字是 ",line.rstrip())
+
 with open("nums.csv") as file:
     for line in file:
 #       num=line.rstrip().split(',')

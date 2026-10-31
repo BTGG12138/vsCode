@@ -1,4 +1,9 @@
 {
     "C_Cpp.default.compilerPath": "/usr/bin/gcc",
-    "cmake.sourceDirectory": "/home/btgg/Desktop/vsSoup/_ws/cpp_demo"
+    "cmake.sourceDirectory": "/home/btgg/Desktop/vsSoup/_ws/cpp_demo",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
