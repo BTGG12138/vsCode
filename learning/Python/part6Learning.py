@@ -28,7 +28,7 @@ if __name__ == "__main__":
     player.hero()
 """
     
-"""
+
 #int("数字串", 进制),把指定进制的字符串转十进制
 print(int("1010",7))
 print(type(True).__name__)
@@ -39,7 +39,15 @@ class Player:
     def get_nums(cls,nums):
         cls.nums=nums
         print(cls.nums)
+    def __add__(self, other):
+    #重载运算符
+        return self.nums+other.nums
 #可以直接调用类方法,不需要实例化对象
 Player.get_nums(int(input("输入数字 ")))
-"""
-
+class Team(Player):
+    pass
+#占位符
+#子类自己写了__init__的时候,默认不会自动运行父类的 __init__！
+#super().__init__()可以调用父类的__init__方法
+Team.get_nums(int(input("输入战队数字 ")))
+print(Player.nums+Team.nums)
