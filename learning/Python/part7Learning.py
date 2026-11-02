@@ -53,6 +53,7 @@ def collect(*args,**kwargs):
 collect(1,4,8,num1=1,num2=4,num3=8)
 """
 
+"""
 def yell(*words):
     #uppercased = map(str.upper, words)
     #把可迭代对象里的每一个元素，依次传给这个函数处理，返回一个迭代器
@@ -67,6 +68,25 @@ players=[
     {"name":"Knight","team":"TES","age":int(26)}
 ]
 #names=[player["name"] for player in players if player["age"] < int(28)]
+#print(names)
 #列表推导式
+names=filter(lambda player: player["age"] < int(28), players)
+#只留下让函数返回True的元素
+for name in names:
+    print(name["name"])
+"""
 
-print(names)
+
+players=["Faker","Oner","Keria"]
+T1=[{"name":player,"team":"T1"} for player in players]
+print(T1)
+for i,player in enumerate(players):
+    #enumerate(可迭代对象, start=0)
+    print(i+2,player)
+def print_eggs(num):
+    for i in range(num):
+        yield "大鸡蛋 "*(i+1)
+        #遇到 yield就暂停,把值抛出去;下次调用继续从暂停的地方跑
+        #生成器不会一次性把所有数据存进内存,要一个算一个
+for _ in print_eggs(int(input("输入鸡蛋数量: "))):
+    print(_)
