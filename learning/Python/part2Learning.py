@@ -28,6 +28,7 @@ players={
     "Doinb":"FPX",
     "Knight":"TES"
 }
+#是字典
 for player in players:
     print(player,"的战队是",players[player])
 players=[
@@ -36,6 +37,7 @@ players=[
     {"name":"Doinb","team":"FPX","age":27},
     {"name":"Knight","team":"TES","age":26}
 ]
+#是列表套字典
 for player in players:
     print(player["name"],"的战队是",player["team"],"年龄是",player["age"])
 #循环嵌套可以用两个占位符

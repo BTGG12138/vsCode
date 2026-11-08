@@ -24,3 +24,5 @@ install/
 log/
 *.db
 .DS_Store
+*.jpg
+*.png
