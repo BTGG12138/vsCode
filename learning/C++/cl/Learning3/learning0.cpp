@@ -25,7 +25,7 @@ int main() {
 避免头文件冲突：如果你在头文件 .h 里写了一个函数，必须加 inline，否则多个 .cpp 文件引用它时，会报“重定义（multiple definition）”错误。
 绝对禁止：在头文件中使用 using namespace
 
-避免“命名空间污染”（Name Pollution）
+::避免“命名空间污染”（Name Pollution）
 让代码的“出处”一目了然
 支持库的“模块化”演进
 */
