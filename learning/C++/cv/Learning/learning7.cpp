@@ -50,4 +50,29 @@ int& 是左值引用，它只能绑定到左值。
 int&& 是右值引用，它只能绑定到右值。
 
 this解决命名冲突
+
+explicit 构造函数	禁止隐式 T → 类
+explicit operator T()	禁止隐式 类 → T（if (obj) 等上下文转换仍可用）
+explicit(bool)（C++20）	条件 explicit
+显式写出转换	static_cast<T>(x)、T(x)
+
+virtual void f() = 0; -> 纯虚（我不做，子类做）
+MyClass() = default; -> 默认（编译器帮我做）
+
+#include <iostream>
+using std::cout; using std::endl;
+
+struct Counted {
+  Counted() { Counted::count++; }   // 构造函数：创建对象，计数+1
+  ~Counted() { Counted::count--; }  // 析构函数：销毁对象，计数-1
+  static int count;    // 【声明】静态成员变量，属于整个类，不属于单个对象
+};
+int Counted::count = 0;  // 【定义+初始化】静态变量必须在类外分配内存
+int main() {
+  Counted a, b;   // 创建2个对象，构造执行2次 → count = 2
+  cout << "Count: " << Counted::count << endl;
+  Counted c;      // 再创建1个对象，构造执行1次 → count = 3
+  cout << "Count: " << Counted::count << endl;
+  return 0;
+}
 */
