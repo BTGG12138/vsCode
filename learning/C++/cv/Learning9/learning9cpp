@@ -1,0 +1,20 @@
+#include <cstdio>
+
+// 主模板
+template<typename T> class A;
+
+// 全特化
+template<> class A<void> {};
+
+// 偏特化 1：一级指针 Tp*
+template<typename Tp> class A<Tp*> {};
+
+// 偏特化 2：二级指针 Tp**
+template<typename Tp> class A<Tp**> {};
+
+int main()
+{
+    A<int*> a1;    // 匹配 A<Tp*>
+    A<int***> a2;  // 匹配 A<Tp**>
+    return 0;
+}
